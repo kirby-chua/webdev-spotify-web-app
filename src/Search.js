@@ -40,12 +40,18 @@ function Search() {
             */}
             <ul className="list-group">
                 {songs.map(song => <li className="list-group-item" key={song.trackId}>
-                    <div>{song.trackName}</div>
-                    <div>
-                        <audio controls>
-                            <source src={song.previewUrl}></source>
-                        </audio>
+                    <div className="row">
+                        <div className="col">{song.trackName}</div>
+                        <div className="col">
+                            <audio controls>
+                                <source src={song.previewUrl}></source>
+                            </audio>
+                        </div>
+                        <div className="col">
+                            <i className="bi bi-heart"></i>
+                        </div>
                     </div>
+
                 </li>)}
             </ul>
         </div>
