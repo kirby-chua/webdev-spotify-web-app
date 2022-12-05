@@ -3,17 +3,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {BrowserRouter} from "react-router-dom";
 import {Routes, Route} from "react-router";
-import Home from "./Home";
-import Search from "./Search";
-import Details from "./Details";
-import Login from "./Login";
-import Profile from "./Profile";
+import Home from "./spootify/Home";
+import Search from "./spootify/Search";
+import Details from "./spootify/Details";
+import Login from "./spootify/Login";
+import Profile from "./spootify/Profile";
 import {Provider} from "react-redux";
-import songsReducer from "./reducers/songs-reducer";
+import itunesReducer from "./itunes/itunes-reducer";
+import followsReducer from "./follows/follows-reducer"
+import likesReducer from "./likes/likes-reducer"
+
 import {configureStore} from "@reduxjs/toolkit";
 
-const store = configureStore(
-    {reducer: {songs: songsReducer}});
+const store = configureStore({
+    reducer: {
+        itunes: itunesReducer,
+        // songs: songsReducer,
+        likes: likesReducer,
+        // users: usersReducer,
+        // reviews: reviewsReducer,
+        follows: followsReducer
+
+    }
+});
 
 function App() {
     return (

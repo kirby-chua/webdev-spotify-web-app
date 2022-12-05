@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Nav from "./Nav";
 import {useDispatch, useSelector} from "react-redux";
-import {findSongsThunk} from "./services/songs-thunks";
+import {findItunesSongsThunk} from "../itunes/itunes-thunks";
 
 
 function Search() {
@@ -13,12 +13,12 @@ function Search() {
         }
         setSong(newSong);
     }
-    const {songs, loading} = useSelector(
-        state => state.songs
+    const {itunes, loading} = useSelector(
+        state => state.itunes
     )
     const dispatch = useDispatch();
     const searchSong = () => {
-        dispatch(findSongsThunk(song));
+        dispatch(findItunesSongsThunk(song));
     }
     return (
         <div>
@@ -39,13 +39,16 @@ function Search() {
                 Todo: maybe put this in a component
             */}
             <ul className="list-group">
-                {songs.map(song => <li className="list-group-item" key={song.trackId}>
+                {itunes.map(song => <li className="list-group-item" key={song.trackId}>
                     <div className="row">
                         <div className="col">{song.trackName}</div>
                         <div className="col">
                             <audio controls>
                                 <source src={song.previewUrl}></source>
                             </audio>
+                        </div>
+                        <div className="col">
+                            <img src={song.artworkUrl100}></img>
                         </div>
                         <div className="col">
                             <i className="bi bi-heart"></i>
