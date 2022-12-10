@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import Nav from "./Nav";
 import {useDispatch, useSelector} from "react-redux";
 import {findItunesSongsThunk} from "../itunes/itunes-thunks";
 
@@ -22,7 +21,6 @@ function Search() {
     }
     return (
         <div>
-            <Nav/>
             <h1>Search Page</h1>
             <div>
                 <button onClick={searchSong}

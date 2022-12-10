@@ -6,7 +6,7 @@ import {Routes, Route} from "react-router";
 import Home from "./spootify/Home";
 import Search from "./spootify/Search";
 import Details from "./spootify/Details";
-import Login from "./spootify/Login";
+import Login from "./users/login";
 import Profile from "./spootify/Profile";
 import {Provider} from "react-redux";
 import itunesReducer from "./itunes/itunes-reducer";
@@ -14,14 +14,23 @@ import followsReducer from "./follows/follows-reducer"
 import likesReducer from "./likes/likes-reducer"
 
 import {configureStore} from "@reduxjs/toolkit";
+import CurrentUser from "./users/current-user";
+import reviewsReducer from "./reviews/reviews-reducer";
+import usersReducer from "./users/users-reducer";
+import songsReducer from "./songs/songs-reducer";
+import Nav from "./spootify/Nav";
+import ProtectedRoute from "./users/protected-route";
+import PublicProfile from "./users/public-profile";
+import Register from "./users/register";
+import Logout from "./users/logout";
 
 const store = configureStore({
     reducer: {
         itunes: itunesReducer,
-        // songs: songsReducer,
+        songs: songsReducer,
         likes: likesReducer,
-        // users: usersReducer,
-        // reviews: reviewsReducer,
+        users: usersReducer,
+        reviews: reviewsReducer,
         follows: followsReducer
 
     }
@@ -29,24 +38,38 @@ const store = configureStore({
 
 function App() {
     return (
-        <Provider store={store}>
-            <BrowserRouter>
-                <div className="container">
-                    <Routes>
-                        <Route path="/*"
-                               element={<Home/>}/>
-                        <Route path="/search"
-                               element={<Search/>}/>
-                        <Route path="/details"
-                               element={<Details/>}/>
-                        <Route path="/login"
-                               element={<Login/>}/>
-                        <Route path="/profile"
-                               element={<Profile/>}/>
-                    </Routes>
-                </div>
-            </BrowserRouter>
-        </Provider>
+        <div className="container">
+            <Provider store={store}>
+                <BrowserRouter>
+                    <CurrentUser>
+                        <Nav/>
+                        <Routes>
+                            <Route path="/*"
+                                   element={<Home/>}/>
+                            <Route path="/search"
+                                   element={<Search/>}/>
+                            <Route path="/details/:imdbID"
+                                   element={<Details/>}/>
+                            <Route path="/login"
+                                   element={<Login/>}/>
+                            <Route path="/register"
+                                   element={<Register/>}/>
+                            <Route path="/logout"
+                                   element={<Logout/>}/>
+                            <Route path="/profile/"
+                                   element={
+                                       <ProtectedRoute>
+                                           <Profile/>
+                                       </ProtectedRoute>}/>
+                            <Route path="/profile/:uid"
+                                   element={
+                                       <PublicProfile/>}/>
+                        </Routes>
+                    </CurrentUser>
+                </BrowserRouter>
+            </Provider>
+        </div>
+
     );
 }
 
