@@ -3,4 +3,4 @@ import * as service
     from "./itunes-service"
 
 export const findItunesSongsThunk = createAsyncThunk('findItunesSongs', async (song) =>
-    await service.findItunesSongs(song.song))
+    await service.findItunesSongs(song))

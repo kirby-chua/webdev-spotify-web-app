@@ -20,6 +20,7 @@ export const findLikes = async () => {
 }
 
 export const findSongsLikedByUser = async (uid) => {
+    console.log(`${USERS_API}/${uid}/likes`)
     const response = await axios.get(`${USERS_API}/${uid}/likes`)
     return response.data
 }

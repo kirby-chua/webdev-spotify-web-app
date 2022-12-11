@@ -26,3 +26,8 @@ export const findSong = async (sid) => {
     const response = await axios.get(`${SONGS_API}/${sid}`)
     return response.data
 }
+
+export const findSongByTrackId = async (sid) => {
+    const response = await axios.get(`${SONGS_API}/${sid}/track`)
+    return response.data
+}

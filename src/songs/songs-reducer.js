@@ -1,5 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {createSongThunk, deleteSongThunk, findAllSongsThunk, findSongThunk, updateSongThunk} from "./songs-thunks";
+import {
+    createSongThunk,
+    deleteSongThunk,
+    findAllSongsThunk,
+    findSongByTrackIdThunk,
+    findSongThunk,
+    updateSongThunk
+} from "./songs-thunks";
 
 const initialState = {
     songs: [],
@@ -29,6 +36,9 @@ const songsReducer = createSlice({
         },
         [findSongThunk.fulfilled]: (state, {payload}) => {
             state.songs = payload
+        },
+        [findSongByTrackIdThunk.fulfilled]: (state, {payload}) => {
+            state.songs.push(payload)
         }
     }
 })

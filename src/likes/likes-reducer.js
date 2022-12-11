@@ -11,7 +11,7 @@ const initialState = {
     likes: [],
     songs: [],
     users: [],
-    loading: false
+    loading: true
 }
 
 const likesReducer = createSlice({
@@ -27,12 +27,15 @@ const likesReducer = createSlice({
         },
         [findLikesThunk.fulfilled]: (state, {payload}) => {
             state.likes = payload
+            state.loading = false
         },
         [findSongsLikedByUserThunk.fulfilled]: (state, {payload}) => {
-            state.songs = payload
+            state.likes = payload
+            state.loading = false
         },
         [findUsersWhoLikedSongThunk.fulfilled]: (state, {payload}) => {
             state.users = payload
+            state.loading = false
         }
     }
 })
