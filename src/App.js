@@ -7,7 +7,6 @@ import Home from "./spootify/Home";
 import Search from "./spootify/Search";
 import Details from "./spootify/Details";
 import Login from "./users/login";
-import Profile from "./spootify/Profile";
 import {Provider} from "react-redux";
 import itunesReducer from "./itunes/itunes-reducer";
 import followsReducer from "./follows/follows-reducer"
@@ -23,6 +22,7 @@ import ProtectedRoute from "./users/protected-route";
 import PublicProfile from "./users/public-profile";
 import Register from "./users/register";
 import Logout from "./users/logout";
+import Profile from "./users/profile";
 
 const store = configureStore({
     reducer: {
