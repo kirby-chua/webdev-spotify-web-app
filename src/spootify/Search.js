@@ -80,7 +80,7 @@ function Search() {
                         })).then(() => dispatch(findSongsLikedByUserThunk(currentUser._id)))
                 }
                 }
-                className="bi bi-heart-fill"></i>
+                className="bi bi-heart-fill text-danger"></i>
 
         }
     }
@@ -93,9 +93,6 @@ function Search() {
                         className="btn btn-primary float-end"
                         onClick={() => {
                             dispatch(findSongBySearchTermThunk(searchTerm))
-                            // if (currentUser) {
-                            //     dispatch(findSongsLikedByUserThunk(currentUser._id))
-                            // }
                         }}>Search
                     </button>
                     <input
@@ -112,19 +109,21 @@ function Search() {
                 {itunes && loading && <h2>loading</h2>}
                 {itunes && !loading && itunes.map(song => <li className="list-group-item" key={song.trackId}>
                     <div className="row">
-                        <Link to={`/details/${song.trackId}`}>{song.trackName}</Link>
-                        <div className="col">
-                            <audio controls>
+                        <div className="col-2 float-end">
+                            <img src={song.artworkUrl100}></img>
+                        </div>
+                        <div className="col-4 float-end">
+                            <Link to={`/details/${song.trackId}`}>{song.trackName}</Link>
+                            <audio className="d-flex align-self-center" controls>
                                 <source src={song.previewUrl}></source>
                             </audio>
                         </div>
-                        <div className="col">
-                            <img src={song.artworkUrl100}></img>
-                        </div>
+                        <div className="col d-flex align-self-center">
                         {
                             currentUser &&
                             <RenderLike song={song}/>
                         }
+                        </div>
 
 
                         {/*<div className="col">*/}

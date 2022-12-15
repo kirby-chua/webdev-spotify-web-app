@@ -5,7 +5,7 @@ function Nav() {
     const {currentUser} = useSelector((state) => state.users)
     const {pathname} = useLocation()
     const parts = pathname.split('/')
-    console.log(parts)
+    // console.log(parts)
     return(
         <ul className="nav nav-pills">
             <li className="nav-item">

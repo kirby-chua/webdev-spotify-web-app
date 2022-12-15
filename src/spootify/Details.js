@@ -14,7 +14,6 @@ const Details = () => {
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
     useEffect(() => {
-        console.log(itunesId)
         dispatch(findSongBySearchTermThunk(itunesId))
         dispatch(findReviewsBySongThunk(itunesId))
     }, [])
@@ -47,8 +46,9 @@ const Details = () => {
                                 </li>
                             </ul>
                         </div>
+
                         {
-                            currentUser &&
+                            currentUser && currentUser.role == 'ADMIN' &&
                             <div className="pt-2">
                                 <textarea
                                     onChange={(e) => setReview(e.target.value)}

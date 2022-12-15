@@ -38,10 +38,10 @@ const PublicProfile = () => {
             </button>
         }
         <h1>{publicProfile && publicProfile.username}</h1>
-        <ul>
+        <ul className="list-group">
             {
                 reviews && reviews.map((review) =>
-                    <li>
+                    <li className="list-group-item">
                         <Link to={`/details/${review.imdbID}`}>
                             {review.review} {review.imdbID}
                         </Link>

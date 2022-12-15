@@ -43,7 +43,7 @@ const Register = () => {
                     <input
                         onClick={() => setRole('ADMIN')}
                         type="radio" id="ADMIN" name="user-role" value="ADMIN"/>
-                    <label htmlFor="ADMIN">Admin</label><br/>
+                    <label htmlFor="ADMIN">Reviewer</label><br/>
 
                 </div>
             </div>
