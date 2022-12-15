@@ -100,7 +100,7 @@ function Search() {
                 Todo: maybe put this in a component
             */}
                 {itunes && loading && <h2>loading</h2>}
-                {itunes && !loading && itunes.map(song => <li className="list-group-item" key={song.trackId}>
+                {itunes && !loading && itunes.map(song => <li key={song._id} className="list-group-item" key={song.trackId}>
                     <div className="row">
                         <div className="col-2 float-end">
                             <img src={song.artworkUrl100}></img>

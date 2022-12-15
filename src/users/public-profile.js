@@ -41,7 +41,7 @@ const PublicProfile = () => {
         <ul className="list-group">
             {
                 reviews && reviews.map((review) =>
-                    <li className="list-group-item">
+                    <li key={review._id} className="list-group-item">
                         <Link to={`/details/${review.imdbID}`}>
                             {review.review} {review.imdbID}
                         </Link>

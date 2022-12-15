@@ -18,7 +18,7 @@ const Follows = ({uid}) => {
             <div className="list-group">
                 {
                     following && following.map((follow) =>
-                        <Link to={`/profile/${follow.followed._id}`} className="list-group-item">
+                        <Link key={follow._id} to={`/profile/${follow.followed._id}`} className="list-group-item">
                             {follow.followed.username}
                         </Link>
                     )
@@ -29,7 +29,7 @@ const Follows = ({uid}) => {
             <div className="list-group">
                 {
                     followers && followers.map((follow) =>
-                        <Link to={`/profile/${follow.follower._id}`} className="list-group-item">
+                        <Link key={follow._id} to={`/profile/${follow.follower._id}`} className="list-group-item">
                             {follow.follower.username}
                         </Link>
                     )

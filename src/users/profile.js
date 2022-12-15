@@ -49,7 +49,7 @@ const Profile = () => {
                 <h2> Liked Songs: </h2>}
             <ul className="list-group">
                 {
-                    likes.map((like) => <li className="list-group-item">{like.song.title}</li>)
+                    likes.map((like) => <li key={like._id} className="list-group-item">{like.song.title}</li>)
                 }
             </ul>
             {/* add remove review*/}
@@ -57,7 +57,7 @@ const Profile = () => {
                 <h2> Reviews: </h2>}
             <ul className="list-group">
                 {
-                    reviews.map((review) => <li className="list-group-item">{review.review}<i
+                    reviews.map((review) => <li key={review._id} className="list-group-item">{review.review}<i
                         className="bi bi-x-lg float-end"
                         onClick={() => deleteReviewHandler(review._id)}
                     ></i></li>)
