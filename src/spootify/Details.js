@@ -71,15 +71,15 @@ const Details = () => {
                             reviews.map((review) =>
                                 <li className="list-group-item">
                                     <div className="row">
-                                    <div className="col-10 border-end">
-                                        {review.review}
+                                        <div className="col-10 border-end">
+                                            {review.review}
 
-                                    </div>
-                                    <div className="col-2">
-                                        <Link to={`/profile/${review.author._id}`}>
-                                            {review.author.username}
-                                        </Link>
-                                    </div>
+                                        </div>
+                                        <div className="col-2">
+                                            <Link to={`/profile/${review.author._id}`}>
+                                                {review.author.username}
+                                            </Link>
+                                        </div>
                                     </div>
                                 </li>
                             )

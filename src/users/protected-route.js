@@ -4,9 +4,9 @@ import {useSelector} from "react-redux";
 const ProtectedRoute = ({children}) => {
     const navigate = useNavigate()
     const {currentUser} = useSelector((state) => state.users)
-    if (currentUser){
+    if (currentUser) {
         return (children)
-    } else{
+    } else {
         return (<Navigate to={'/login'}/>)
     }
 }

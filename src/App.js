@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {BrowserRouter} from "react-router-dom";
-import {Routes, Route} from "react-router";
+import {Route, Routes} from "react-router";
 import Home from "./spootify/Home";
 import Search from "./spootify/Search";
 import Details from "./spootify/Details";

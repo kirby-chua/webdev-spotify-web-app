@@ -1,5 +1,6 @@
 import axios from "axios";
-const ITUNES_API ='https://itunes.apple.com/search';
+
+const ITUNES_API = 'https://itunes.apple.com/search';
 
 export const findSongBySearchTerm = async (song) => {
     const request = `${ITUNES_API}?term=${song}&media=music&entity=song`;

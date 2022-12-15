@@ -22,7 +22,7 @@ const PublicProfile = () => {
     useEffect(() => {
         dispatch(findUserByIdThunk(uid))
         dispatch(findReviewsByAuthorThunk(uid))
-        if(currentUser){
+        if (currentUser) {
             console.log(currentUser._id)
             dispatch(findFollowingThunk(currentUser._id))
         }

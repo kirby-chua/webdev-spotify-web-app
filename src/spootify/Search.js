@@ -2,15 +2,8 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {findSongBySearchTermThunk} from "../itunes/itunes-thunks";
 import {Link} from "react-router-dom";
-import {
-    findSongsLikedByUserThunk,
-    userLikesSongThunk,
-    userUnlikesSongThunk
-} from "../likes/likes-thunks";
-import {
-    createSongThunk,
-    findAllSongsThunk,
-} from "../songs/songs-thunks";
+import {findSongsLikedByUserThunk, userLikesSongThunk, userUnlikesSongThunk} from "../likes/likes-thunks";
+import {createSongThunk, findAllSongsThunk,} from "../songs/songs-thunks";
 
 
 function Search() {
@@ -119,10 +112,10 @@ function Search() {
                             </audio>
                         </div>
                         <div className="col d-flex align-self-center">
-                        {
-                            currentUser &&
-                            <RenderLike song={song}/>
-                        }
+                            {
+                                currentUser &&
+                                <RenderLike song={song}/>
+                            }
                         </div>
 
 
