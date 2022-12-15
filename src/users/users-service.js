@@ -41,6 +41,7 @@ export const createUser = async () => {
 const deleteUser = async () => {
 
 }
-const updateUser = async () => {
-
+export const updateUser = async (user) => {
+    const response = await api.put(`${USER_API}/${user._id}`, user)
+    return response.data
 }

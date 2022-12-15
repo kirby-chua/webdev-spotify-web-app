@@ -67,11 +67,15 @@ function App() {
                                    element={
                                        <PublicProfile/>}/>
                             <Route path="/edit_profile"
-                                   element={<EditProfile/>}/>
+                                   element={
+                                       <ProtectedRoute>
+                                           <EditProfile/>
+                                       </ProtectedRoute>}/>
                             <Route path="/users"
-                                   element={<ProtectedRoute>
-                                       <Users/>
-                                   </ProtectedRoute>}/>
+                                   element={
+                                       <ProtectedRoute>
+                                           <Users/>
+                                       </ProtectedRoute>}/>
                         </Routes>
                     </CurrentUser>
                 </BrowserRouter>
