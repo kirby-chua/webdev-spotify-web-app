@@ -44,9 +44,9 @@ function Nav() {
                     Profile
                 </Link>
             </li>
-            <li className={`nav-item ${!currentUser ? 'd-none':''}`}>
+            <li className={`nav-item${!currentUser ? 'd-none':''}`}>
                 <Link to="/logout"
-                      className={`nav-link ${parts[1] === 'logout'?'active': ''}`}>
+                      className={`btn btn-danger${parts[1] === 'logout'?'active': ''}`}>
                     Logout
                 </Link>
             </li>

@@ -1,4 +1,4 @@
-import {findItunesSongsThunk} from "./itunes-thunks";
+import {findSongBySearchTermThunk} from "./itunes-thunks";
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
@@ -9,17 +9,17 @@ const itunesSlice = createSlice({
     name: 'itunes',
     initialState,
     extraReducers: {
-        [findItunesSongsThunk.pending]:
+        [findSongBySearchTermThunk.pending]:
             (state) => {
                 state.loading = true
                 state.itunes = []
             },
-        [findItunesSongsThunk.fulfilled]:
+        [findSongBySearchTermThunk.fulfilled]:
             (state, {payload}) => {
                 state.loading = false
                 state.itunes = payload
             },
-        [findItunesSongsThunk.rejected]:
+        [findSongBySearchTermThunk.rejected]:
             (state) => {
                 state.loading = true
                 state.itunes = []

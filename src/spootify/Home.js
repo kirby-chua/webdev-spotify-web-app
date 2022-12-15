@@ -15,8 +15,6 @@ function Home() {
 
 
     const getTopSongs = () => {
-        // const topSongs = []
-
         const counts = likes.reduce((p, c) => {
             var id = c.song;
             if (!p.hasOwnProperty(id)) {
@@ -28,8 +26,6 @@ function Home() {
 
         const topSongs = Object.keys(counts).map(key => {
             const song = songs.find(song => song._id === key)
-            // console.log(song)
-            // return {}
             return {title: song.title, artist: song.artist, trackId: song.trackId, count: counts[key]}
         })
 
@@ -40,8 +36,8 @@ function Home() {
 
     return (
         <div>
-            <h1>Home Page</h1>
-            <h1>Top Songs</h1>
+            <h1>Welcome to Spootify!</h1>
+            <h2>Top Songs</h2>
             {!loading && likes.length !== 0 && songs.length !== 0 && <ul className="list-group">
                 {getTopSongs().map(song => <Link to={`/details/${song.trackId}`}
                     className="list-group-item d-flex justify-content-between align-items-center">

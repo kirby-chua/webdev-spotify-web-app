@@ -11,6 +11,7 @@ const reviewsReducer = createSlice({
     initialState,
     extraReducers: {
         [createReviewThunk.fulfilled]: (state, {payload}) => {
+            console.log(payload)
             state.reviews.push(payload)
         },
         [findReviewsBySongThunk.fulfilled]: (state, {payload}) => {

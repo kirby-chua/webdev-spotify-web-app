@@ -10,7 +10,7 @@ import {
 
 const initialState = {
     users: [],
-    loading: false,
+    loading: true,
     currentUser: null,
     publicProfile: null,
 }
@@ -36,6 +36,7 @@ const usersReducer = createSlice({
         },
         [findAllUsersThunk.fulfilled]: (state, {payload}) => {
             state.users = payload
+            state.loading = false
         },
     }
 })

@@ -30,7 +30,7 @@ export const profile = async () => {
     return response.data
 }
 export const findAllUsers = async () => {
-    const response = await axios.get(`${BASE_API}`)
+    const response = await axios.get(`${USER_API}`)
     return response.data
 }
 

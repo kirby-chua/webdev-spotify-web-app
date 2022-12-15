@@ -23,6 +23,8 @@ import PublicProfile from "./users/public-profile";
 import Register from "./users/register";
 import Logout from "./users/logout";
 import Profile from "./users/profile";
+import Users from "./users";
+import {EditProfile} from "./users/edit-profile";
 
 const store = configureStore({
     reducer: {
@@ -48,7 +50,7 @@ function App() {
                                    element={<Home/>}/>
                             <Route path="/search"
                                    element={<Search/>}/>
-                            <Route path="/details/:imdbID"
+                            <Route path="/details/:itunesId"
                                    element={<Details/>}/>
                             <Route path="/login"
                                    element={<Login/>}/>
@@ -64,6 +66,12 @@ function App() {
                             <Route path="/profile/:uid"
                                    element={
                                        <PublicProfile/>}/>
+                            <Route path="/edit_profile"
+                                   element={<EditProfile/>}/>
+                            <Route path="/users"
+                                   element={<ProtectedRoute>
+                                       <Users/>
+                                   </ProtectedRoute>}/>
                         </Routes>
                     </CurrentUser>
                 </BrowserRouter>

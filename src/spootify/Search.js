@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {findItunesSongsThunk} from "../itunes/itunes-thunks";
+import {findSongBySearchTermThunk} from "../itunes/itunes-thunks";
 import {Link} from "react-router-dom";
 import {
     findSongsLikedByUserThunk,
@@ -24,7 +24,7 @@ function Search() {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(findItunesSongsThunk(searchTerm))
+        dispatch(findSongBySearchTermThunk(searchTerm))
         dispatch(findAllSongsThunk())
     }, [])
     useEffect(() => {
@@ -92,7 +92,7 @@ function Search() {
                     <button
                         className="btn btn-primary float-end"
                         onClick={() => {
-                            dispatch(findItunesSongsThunk(searchTerm))
+                            dispatch(findSongBySearchTermThunk(searchTerm))
                             // if (currentUser) {
                             //     dispatch(findSongsLikedByUserThunk(currentUser._id))
                             // }
