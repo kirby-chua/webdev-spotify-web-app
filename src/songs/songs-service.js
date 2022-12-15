@@ -31,3 +31,8 @@ export const findSongByTrackId = async (sid) => {
     const response = await axios.get(`${SONGS_API}/${sid}/track`)
     return response.data
 }
+
+export const getTopSongs = async () => {
+    const response = await axios.get('http://localhost:4000/top_songs')
+    return response.data
+}

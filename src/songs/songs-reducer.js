@@ -4,13 +4,13 @@ import {
     deleteSongThunk,
     findAllSongsThunk,
     findSongByTrackIdThunk,
-    findSongThunk,
+    findSongThunk, getTopSongsThunk,
     updateSongThunk
 } from "./songs-thunks";
 
 const initialState = {
     songs: [],
-    loading: false
+    loading: true
 }
 const songsReducer = createSlice({
     name: 'songs',
@@ -39,6 +39,10 @@ const songsReducer = createSlice({
         },
         [findSongByTrackIdThunk.fulfilled]: (state, {payload}) => {
             state.songs.push(payload)
+        },
+        [getTopSongsThunk.fulfilled]: (state, {payload}) => {
+            state.songs = (payload)
+            state.loading = false
         }
     }
 })

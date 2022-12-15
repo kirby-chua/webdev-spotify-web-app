@@ -1,5 +1,13 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {createSong, deleteSong, findAllSongs, findSong, findSongByTrackId, updateSong} from "./songs-service";
+import {
+    createSong,
+    deleteSong,
+    findAllSongs,
+    findSong,
+    findSongByTrackId,
+    getTopSongs,
+    updateSong
+} from "./songs-service";
 
 export const createSongThunk = createAsyncThunk(
     'createSong',
@@ -29,4 +37,9 @@ export const findSongThunk = createAsyncThunk(
 export const findSongByTrackIdThunk = createAsyncThunk(
     'findSongByTrackId',
     async (sid) => findSongByTrackId(sid)
+)
+
+export const getTopSongsThunk = createAsyncThunk(
+    'getTopSongs',
+    async () => getTopSongs()
 )
