@@ -47,6 +47,8 @@ const PublicProfile = () => {
             </button>
         }
         <h1>{publicProfile && publicProfile.username}</h1>
+        {reviews.length > 0 &&
+                        <h2> Reviews: </h2>}
         <ul className="list-group">
             {
                 reviews && reviews.map((review) =>
