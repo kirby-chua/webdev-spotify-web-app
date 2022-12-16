@@ -10,6 +10,11 @@ export const followUser = async (follow) => {
     return response.data
 }
 
+export const unfollowUser = async (followed) => {
+    const response = await api.delete(`${FOLLOWS_API}/${followed}`)
+    return response.data
+}
+
 export const findFollowers = async (followed) => {
     const response = await api.get(`${USERS_API}/${followed}/followers`)
     return response.data

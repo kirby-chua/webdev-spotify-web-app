@@ -69,7 +69,7 @@ const Details = () => {
                         </li>
                         {
                             reviews.map((review) =>
-                                <li className="list-group-item">
+                                <li key={review._id} className="list-group-item">
                                     <div className="row">
                                         <div className="col-10 border-end">
                                             {review.review}

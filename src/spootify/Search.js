@@ -4,27 +4,29 @@ import {findSongBySearchTermThunk} from "../itunes/itunes-thunks";
 import {Link} from "react-router-dom";
 import {findSongsLikedByUserThunk, userLikesSongThunk, userUnlikesSongThunk} from "../likes/likes-thunks";
 import {createSongThunk, findAllSongsThunk,} from "../songs/songs-thunks";
+import {useNavigate, useParams} from "react-router";
 
 
 function Search() {
+    const {criteria} = useParams()
     const [searchTerm, setSearchTerm] = useState('');
-    const {itunes} = useSelector(
+    const {itunes, loading} = useSelector(
         state => state.itunes
     )
     const {songs} = useSelector((state) => state.songs)
     const {currentUser} = useSelector((state) => state.users)
-    const {likes, loading} = useSelector((state) => state.likes)
-
+    const {likes} = useSelector((state) => state.likes)
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(findSongBySearchTermThunk(searchTerm))
-        dispatch(findAllSongsThunk())
-    }, [])
-    useEffect(() => {
+        if (criteria) {
+            dispatch(findSongBySearchTermThunk(criteria))
+            dispatch(findAllSongsThunk())
+        }
         if (currentUser) {
             dispatch(findSongsLikedByUserThunk(currentUser._id))
         }
-    }, [])
+    }, [criteria, currentUser])
 
 
     const itunesToSong = (itunes) => {
@@ -37,6 +39,7 @@ function Search() {
             artworkUrl: itunes.artworkUrl,
         }
     }
+
 
     const RenderLike = ({song = {}}) => {
         if (likes.filter(like => like.song.trackId == song.trackId) == 0) {
@@ -60,7 +63,6 @@ function Search() {
                         )
 
                     }
-
                 }}
                 className="bi bi-heart"></i>
         } else {
@@ -74,7 +76,6 @@ function Search() {
                 }
                 }
                 className="bi bi-heart-fill text-danger"></i>
-
         }
     }
     return (
@@ -85,7 +86,7 @@ function Search() {
                     <button
                         className="btn btn-primary float-end"
                         onClick={() => {
-                            dispatch(findSongBySearchTermThunk(searchTerm))
+                            navigate(`/search/${searchTerm}`)
                         }}>Search
                     </button>
                     <input
@@ -99,8 +100,9 @@ function Search() {
                 Todo: styling
                 Todo: maybe put this in a component
             */}
-                {itunes && loading && <h2>loading</h2>}
-                {itunes && !loading && itunes.map(song => <li key={song._id} className="list-group-item" key={song.trackId}>
+                {itunes && loading && criteria && <h2>loading</h2>}
+                {itunes && !loading && criteria && itunes.map(song => <li key={song._id} className="list-group-item"
+                                                                          key={song.trackId}>
                     <div className="row">
                         <div className="col-2 float-end">
                             <img src={song.artworkUrl100}></img>
@@ -117,18 +119,10 @@ function Search() {
                                 <RenderLike song={song}/>
                             }
                         </div>
-
-
-                        {/*<div className="col">*/}
-                        {/*    <i className="bi bi-heart"></i>*/}
-                        {/*</div>*/}
                     </div>
 
                 </li>)}
             </ul>
-            <pre>
-                {JSON.stringify(itunes, null, 2)}
-            </pre>
         </div>
 
     );

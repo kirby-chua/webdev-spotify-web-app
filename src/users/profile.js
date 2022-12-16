@@ -49,7 +49,7 @@ const Profile = () => {
                 <h2> Liked Songs: </h2>}
             <ul className="list-group">
                 {
-                    likes.map((like) => <li key={like._id} className="list-group-item">{like.song.title}</li>)
+                    likes.map((like) => <Link to={`/details/${like.song.trackId}`} key={like._id} className="list-group-item">{like.song.title}</Link>)
                 }
             </ul>
             {/* add remove review*/}

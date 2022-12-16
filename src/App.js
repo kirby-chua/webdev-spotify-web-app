@@ -50,6 +50,8 @@ function App() {
                                    element={<Home/>}/>
                             <Route path="/search"
                                    element={<Search/>}/>
+                            <Route path="/search/:criteria"
+                                   element={<Search/>}/>
                             <Route path="/details/:itunesId"
                                    element={<Details/>}/>
                             <Route path="/login"

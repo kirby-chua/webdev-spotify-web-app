@@ -11,6 +11,7 @@ import {
 
 const initialState = {
     songs: [],
+    topSongs: [],
     loading: true
 }
 const songsReducer = createSlice({
@@ -22,6 +23,7 @@ const songsReducer = createSlice({
         },
         [findAllSongsThunk.fulfilled]: (state, {payload}) => {
             state.songs = payload
+            state.loading = false
         },
         [updateSongThunk.fulfilled]: (state, {payload}) => {
             const songNdx = state.songs
@@ -37,12 +39,14 @@ const songsReducer = createSlice({
         },
         [findSongThunk.fulfilled]: (state, {payload}) => {
             state.songs = payload
+            state.loading = false
         },
         [findSongByTrackIdThunk.fulfilled]: (state, {payload}) => {
             state.songs.push(payload)
+            state.loading = false
         },
         [getTopSongsThunk.fulfilled]: (state, {payload}) => {
-            state.songs = (payload)
+            state.topSongs = payload
             state.loading = false
         }
     }

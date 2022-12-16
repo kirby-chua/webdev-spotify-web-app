@@ -9,7 +9,7 @@ const Follows = ({uid}) => {
     useEffect(() => {
         dispatch(findFollowersThunk(uid))
         dispatch(findFollowingThunk(uid))
-    }, [])
+    }, [followers])
 
     return (
         <>
