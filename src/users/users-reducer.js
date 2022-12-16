@@ -14,6 +14,8 @@ const initialState = {
     loading: true,
     currentUser: null,
     publicProfile: null,
+    login: false,
+    register: false
 }
 
 const usersReducer = createSlice({
@@ -25,9 +27,17 @@ const usersReducer = createSlice({
         },
         [registerThunk.fulfilled]: (state, {payload}) => {
             state.currentUser = payload
+            state.register = false
+        },
+        [registerThunk.rejected]: (state, {payload}) => {
+            state.register = true
         },
         [loginThunk.fulfilled]: (state, {payload}) => {
             state.currentUser = payload
+            state.login = false
+        },
+        [loginThunk.rejected]: (state, {payload}) => {
+            state.login = true
         },
         [logoutThunk.fulfilled]: (state, {payload}) => {
             state.currentUser = null

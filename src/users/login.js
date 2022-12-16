@@ -4,7 +4,7 @@ import {loginThunk} from "./users-thunks";
 import {useState} from "react";
 
 function Login() {
-    const {currentUser} = useSelector((state) => state.users)
+    const {currentUser, login} = useSelector((state) => state.users)
     const [username, setUsername] = useState('alice')
     const [password, setPassword] = useState('alice1234')
     const dispatch = useDispatch()
@@ -35,6 +35,9 @@ function Login() {
                 className="btn btn-primary w-100"
                 onClick={handleLoginBtn}>Login
             </button>
+            {
+                login && <h4 className="text-danger">Login failed</h4>
+            }
         </>
     )
 }

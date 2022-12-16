@@ -4,7 +4,7 @@ import {registerThunk} from "./users-thunks";
 import {Navigate} from "react-router";
 
 const Register = () => {
-    const {currentUser} = useSelector((state) => state.users)
+    const {currentUser, register} = useSelector((state) => state.users)
     const [username, setUsername] = useState('username')
     const [password, setPassword] = useState('password')
     const [role, setRole] = useState('USER')
@@ -55,6 +55,9 @@ const Register = () => {
             {
                 currentUser &&
                 <h1>Welcome new user: {currentUser.username}</h1>
+            }
+            {
+                register && <h4 className="text-danger">Register failed</h4>
             }
         </>
     )
