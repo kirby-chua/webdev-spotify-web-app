@@ -25,7 +25,7 @@ const Details = () => {
     }
     return (
         <>
-            {loading && <h1>loading</h1>}
+            {loading && <h3 className="text-center">loading</h3>}
             {!loading &&
                 <div>
                     <h1>{itunes[0].trackName}</h1>

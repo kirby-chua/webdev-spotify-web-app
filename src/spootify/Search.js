@@ -80,7 +80,7 @@ function Search() {
     }
     return (
         <div>
-            <h1>Search Page</h1>
+            <h1 className="mt-2 text-center">Search Page</h1>
             <ul className="list-group">
                 <li className="list-group-item">
                     <button
