@@ -21,6 +21,10 @@ function Home() {
 
     useEffect(() => {
         dispatch(getTopSongsThunk())
+
+    }, [])
+
+    useEffect(() => {
         if(currentUser != null) {
             dispatch(findReviewsByAuthorThunk(currentUser._id))
             dispatch(findSongsLikedByUserThunk(currentUser._id))
@@ -53,10 +57,10 @@ function Home() {
                 <h2 className="mt-3 text-center"> Reviews </h2>}
             <ul className="list-group">
                 {
-                    reviews.map((review) => <li key={review._id} className="list-group-item">{review.review}<i
+                    reviews.map((review) => <Link to={`/details/${review.itunesId}`} key={review._id} className="list-group-item">{review.review}<i
                         className="bi bi-x-lg float-end"
                         onClick={() => deleteReviewHandler(review._id)}
-                    ></i></li>)
+                    ></i></Link>)
                 }
             </ul>
         </div>
