@@ -1,6 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './vendors/bootswatch/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {BrowserRouter} from "react-router-dom";
 import {Route, Routes} from "react-router";
@@ -46,6 +47,7 @@ function App() {
                 <BrowserRouter>
                     <CurrentUser>
                         <Nav/>
+                        <hr/>
                         <Routes>
                             <Route path="/*"
                                    element={<Home/>}/>

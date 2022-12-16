@@ -12,7 +12,7 @@ function Home() {
 
     return (
         <div>
-            <h1 className="mt-3">Welcome to Spootify!</h1>
+            <h1 className="mt-2">Welcome to Spootify!</h1>
             <h2>Top Songs</h2>
             {!loading && <ul className="list-group">
                 {topSongs.map((song) =>
