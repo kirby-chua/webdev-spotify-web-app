@@ -1,5 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {BrowserRouter} from "react-router-dom";
 import {Route, Routes} from "react-router";
@@ -40,7 +41,7 @@ const store = configureStore({
 
 function App() {
     return (
-        <div className="container">
+        <div className="container mt-3">
             <Provider store={store}>
                 <BrowserRouter>
                     <CurrentUser>
